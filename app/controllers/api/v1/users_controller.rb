@@ -14,6 +14,16 @@ class Api::V1::UsersController < ApplicationController
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
 
+    def update 
+        user = User.find(params[:id])
+        user.update(user_params)
+        if user.valid?
+            render json: UserSerializer.new(user)
+        else 
+            render json: { error: 'failed to update '} 
+        end 
+    end 
+
     private
     def user_params
         params.require(:user).permit(:username, :password, :email, :age, :gender, :image_url)
