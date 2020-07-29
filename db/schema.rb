@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2020_07_26_173057) do
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.string "content"
-    t.boolean "completed"
     t.boolean "starred"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
