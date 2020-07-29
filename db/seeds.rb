@@ -13,8 +13,8 @@ DatabaseCleaner.clean_with(:truncation)
 
 newUser = User.create(username: "Steven", password: "pa$sword", email: "user1@user.com", age: 34, gender: "male", image_url: "none")
 
-note1 = Note.create(title: "My First Note", content: "What a great note!", completed: false, starred: false, user_id: 1)
-note2 = Note.create(title: "My Second Note", content: "This is still a good note!", completed: false, starred: true, user_id: 1)
+note1 = Note.create(title: "My First Note", content: "What a great note!", starred: false, user_id: 1)
+note2 = Note.create(title: "My Second Note", content: "This is still a good note!", starred: true, user_id: 1)
 
 
 
@@ -56,8 +56,8 @@ end
 
 TITLES = ["The Meaning of Life", "Gone With the Wind", "My Teacher's Favorite Thing", "Why Am I Here?", "Enough of This", "When is the Exam?", "I'm So Sleepy..."]
 VERDICT1 = [true, false, false, false, false]
-VERDICT2 = [true, false, false, false, false, false, false, false, false, false]
+# VERDICT2 = [true, false, false, false, false, false, false, false, false, false]
 
-1500.times do 
-    Note.create(title: TITLES.sample, content: Faker::Movie.quote, completed: VERDICT2.sample, starred: VERDICT1.sample, user_id: User.all.sample.id)
+500.times do 
+    Note.create(title: TITLES.sample, content: Faker::Movie.quote, starred: VERDICT1.sample, user_id: User.all.sample.id)
 end
