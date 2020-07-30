@@ -11,7 +11,7 @@ require 'database_cleaner'
 DatabaseCleaner.clean_with(:truncation)
 
 
-newUser = User.create(username: "Steven", password: "pa$sword", email: "user1@user.com", age: 34, gender: "male", image_url: "none")
+newUser = User.create(username: "Steven", password: "pa$sword", email: "user1@user.com", age: 34, gender: "male", image_url: Faker::Avatar.image)
 
 # note1 = Note.create(title: "My First Note", content: "What a great note!", starred: false, user_id: 1)
 # note2 = Note.create(title: "My Second Note", content: "This is still a good note!", starred: true, user_id: 1)
