@@ -13,8 +13,8 @@ DatabaseCleaner.clean_with(:truncation)
 
 newUser = User.create(username: "Steven", password: "pa$sword", email: "user1@user.com", age: 34, gender: "male", image_url: "none")
 
-note1 = Note.create(title: "My First Note", content: "What a great note!", starred: false, user_id: 1)
-note2 = Note.create(title: "My Second Note", content: "This is still a good note!", starred: true, user_id: 1)
+# note1 = Note.create(title: "My First Note", content: "What a great note!", starred: false, user_id: 1)
+# note2 = Note.create(title: "My Second Note", content: "This is still a good note!", starred: true, user_id: 1)
 
 
 
@@ -37,6 +37,9 @@ note2 = Note.create(title: "My Second Note", content: "This is still a good note
         )
 end 
 
+TITLES = ["The Meaning of Life", "Gone With the Wind", "My Teacher's Favorite Thing", "Why Am I Here?", "Enough of This", "When is the Exam?", "I'm So Sleepy..."]
+VERDICT1 = [true, false, false, false, false]
+
 # User.all.each do |user|
 #     dates_array = []
 #     date = Date.today - 20
@@ -45,19 +48,19 @@ end
 #         date += 1 
 #     end 
 #     dates_array.each do |date|
-#         DailyLog.create(status: "complete", title: date, user_id: user.id)
+#         Note.create(title: TITLES.sample, content: Faker::Movie.quote, starred: VERDICT1.sample, user_id: User.all.sample.id)
 #     end
 # end  
 
+User.all.each do |user|
+    TITLES.each do |title|
+        Note.create(title: title, content: Faker::Movie.quote, starred: VERDICT1.sample, user_id: user.id)
+    end
+end  
 
 # firstLog = DailyLog.create(status: "complete", title: "Sunday, July 5, 2020")
 # secondLog = DailyLog.create(status: "complete", title: "Monday, July 6, 2020")
 # thirdLog = DailyLog.create(status: "complete", title: "Tuesday, July 7, 2020")
 
-TITLES = ["The Meaning of Life", "Gone With the Wind", "My Teacher's Favorite Thing", "Why Am I Here?", "Enough of This", "When is the Exam?", "I'm So Sleepy..."]
-VERDICT1 = [true, false, false, false, false]
-# VERDICT2 = [true, false, false, false, false, false, false, false, false, false]
 
-500.times do 
-    Note.create(title: TITLES.sample, content: Faker::Movie.quote, starred: VERDICT1.sample, user_id: User.all.sample.id)
-end
+# VERDICT2 = [true, false, false, false, false, false, false, false, false, false]
