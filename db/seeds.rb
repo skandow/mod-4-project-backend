@@ -28,6 +28,6 @@ VERDICT = [true, false, false, false, false]
 
 User.all.each do |user|
     TITLES.each do |title|
-        Note.create(title: title, content: Faker::Lorem.paragraphs, starred: VERDICT.sample, user_id: user.id)
+        Note.create(title: title, content: "", starred: VERDICT.sample, user_id: user.id)
     end
 end  
